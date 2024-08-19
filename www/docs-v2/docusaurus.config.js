@@ -60,9 +60,9 @@ const config = {
     ({
       colorMode: {
         defaultMode: 'light',
-        disableSwitch: true,
+        // disableSwitch: true,
         respectPrefersColorScheme: false,
-      },  
+      },
       navbar: {
         title: 'Locomotive Scroll',
         items: [
@@ -72,7 +72,7 @@ const config = {
             position: 'right',
           },
           {
-            href: 'https://github.com/facebook/docusaurus',
+            href: 'https://github.com/locomotivemtl/locomotive-scroll',
             label: 'GitHub',
             position: 'right',
           },
