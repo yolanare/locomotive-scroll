@@ -1,9 +1,0 @@
----
-sidebar_position: 5
----
-
-# data-scroll-repeat
-
-Specifies whether the element's in-view detection should repeat if it is declared.
-
-By default, the in-view detection of elements is not repeated. **Simply declaring this attribute will enable the repeat behavior for in-view detection of the element.**

@@ -13,14 +13,14 @@ const config = {
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
-  url: 'https://your-docusaurus-site.example.com',
+  url: 'https://scroll.locomotive.ca',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: '/',
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'facebook', // Usually your GitHub org/user name.
+  organizationName: 'locomotivemtl', // Usually your GitHub org/user name.
   projectName: 'docusaurus', // Usually your repo name.
 
   onBrokenLinks: 'throw',
@@ -54,14 +54,21 @@ const config = {
       }),
     ],
   ],
-
+  themes: [
+    [
+      require.resolve("@easyops-cn/docusaurus-search-local"),
+      ({
+        hashed: true,
+      }),
+    ]
+  ],
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       colorMode: {
-        defaultMode: 'light',
+        // defaultMode: 'light',
         // disableSwitch: true,
-        respectPrefersColorScheme: false,
+        respectPrefersColorScheme: true,
       },
       navbar: {
         title: 'Locomotive Scroll',
@@ -89,7 +96,15 @@ const config = {
               },
               {
                 label: 'Documentation',
-                to: '/category/documentation',
+                to: '/documentation/options',
+              },
+              {
+                label: 'Examples',
+                to: '/examples',
+              },
+              {
+                label: 'Extras',
+                to: '/extras/limitations',
               },
             ],
           },
@@ -127,7 +142,8 @@ const config = {
         copyright: `Copyright © ${new Date().getFullYear()} Locomotive Scroll`,
       },
       prism: {
-        theme: prismThemes.vsDark,
+        theme: prismThemes.github,
+        darkTheme: prismThemes.vsDark,
       },
     }),
 };

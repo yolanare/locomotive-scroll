@@ -15,7 +15,7 @@ locomotiveScroll.destroy();
 
 ## start()
 
-The `start()` method allows you to manually start the scroll. By default, the scroll automatically starts when you create the Locomotive Scroll instance. However, there may be situations where you need to programmatically control when the scroll starts. In such cases, you can utilize the [autoStart](/options?id=autostart) option to have more flexibility and decide whether to initiate the scroll automatically or not.
+The `start()` method allows you to manually start the scroll. By default, the scroll automatically starts when you create the Locomotive Scroll instance. However, there may be situations where you need to programmatically control when the scroll starts. In such cases, you can utilize the [autoStart](/documentation/options#autostart) option to have more flexibility and decide whether to initiate the scroll automatically or not.
 
 ```js
 const locomotiveScroll = new LocomotiveScroll({ autoStart: false });
@@ -26,7 +26,7 @@ requestAnimationFrame(() => {
 });
 ```
 
-> :bulb: **Tip**: If you prefer not to start Locomotive Scroll automatically, you can utilize the [autoStart](/options?id=autostart) option.
+> :bulb: **Tip**: If you prefer not to start Locomotive Scroll automatically, you can utilize the [autoStart](/documentation/options#autostart) option.
 
 ## stop()
 
@@ -40,13 +40,13 @@ requestAnimationFrame(() => {
     locomotiveScroll.stop();
 });
 ```
-> :bulb: **Tip**: If you prefer not to start Locomotive Scroll automatically, you can utilize the [autoStart](/options?id=autostart) option.
+> :bulb: **Tip**: If you prefer not to start Locomotive Scroll automatically, you can utilize the [autoStart](/documentation/options#autostart) option.
 
 ## resize()
 
 The `resize()` method allows you to manually trigger the resize callback of the Locomotive Scroll instance. This is useful when you need to handle resizing events programmatically or when you want to manually update the scroll calculations after a layout change.
 
-> :warning: **Note**: Locomotive Scroll automatically handles resize events, eliminating the need for manual resizing. For more information, please refer to the [Autoresize](/options?id=autoresize) section in the documentation.
+> :warning: **Note**: Locomotive Scroll automatically handles resize events, eliminating the need for manual resizing. For more information, please refer to the [Autoresize](/documentation/options#autoresize) section in the documentation.
 
 ```js
 const locomotiveScroll = new LocomotiveScroll();
