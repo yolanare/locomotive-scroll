@@ -12,6 +12,8 @@
  * - scrollCssProgress - Add a specific css variable (PROGRESS_CSS_VAR) that store the scroll progress
  * - scrollEventProgress - Send scroll progress to custom event listeners.
  * - scrollSpeed - Add a scroll multiplicator to create a parallax effect
+ * + scrollParallaxSideways - Translates the scroll parallax direction to be sideways from the scroll orientation.
+ * + scrollParallaxClamp - Clamps the scroll parallax to the origin position of the element, negative or positive (-/+).
  * - scrollRepeat - Repeat the option to trigger animation each time the element is intersected
  * - scrollCall - Call a custom event or a modular callback when the element is intersected
  */

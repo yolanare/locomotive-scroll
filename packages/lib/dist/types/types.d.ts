@@ -129,6 +129,8 @@ export interface IScrollElementOptions {
  *  @property {boolean} scrollCssProgress       - Add a specific css variable (PROGRESS_CSS_VAR) that store the scroll progress.
  *  @property {?string} scrollEventProgress     - Send scroll progress to custom event listeners.
  *  @property {?number} scrollSpeed             - Add a scroll multiplicator to create a parallax effect.
+ *  @property {boolean} scrollParallaxSideways  + Translates the scroll parallax direction to be sideways from the scroll orientation.
+ *  @property {?string} scrollParallaxClamp     + Clamps the scroll parallax to the origin position of the element, negative or positive (-/+).
  *  @property {boolean} scrollRepeat            - Repeat the option to trigger animation each time the element is intersected.
  *  @property {?string} scrollCall              - Call a custom event or a modular callback when the element is intersected.
  *  @property {?string} scrollCallSelf          - Specify that the modular callback is set on the scroll element itself.
@@ -143,6 +145,8 @@ export interface IScrollElementAttributes {
     scrollCssProgress: boolean;
     scrollEventProgress: string | null;
     scrollSpeed: number | null;
+    scrollParallaxSideways: boolean;
+    scrollParallaxClamp: string | null;
     scrollRepeat: boolean;
     scrollCall: string | null;
     scrollCallSelf: boolean;

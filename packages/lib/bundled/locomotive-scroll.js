@@ -234,7 +234,7 @@
   var PROGRESS_MODULAR_METHOD = 'onScrollProgress';
   var ScrollElement = /*#__PURE__*/function () {
     function ScrollElement(_ref) {
-      var _this$$el$dataset$scr, _this$$el$dataset$scr2, _this$$el$dataset$scr3, _this$$el$dataset$scr4, _this$$el$dataset$scr5;
+      var _this$$el$dataset$scr, _this$$el$dataset$scr2, _this$$el$dataset$scr3, _this$$el$dataset$scr4, _this$$el$dataset$scr5, _this$$el$dataset$scr6;
       var $el = _ref.$el,
         id = _ref.id,
         modularInstance = _ref.modularInstance,
@@ -284,8 +284,10 @@
         scrollCssProgress: this.$el.dataset['scrollCssProgress'] != null,
         scrollEventProgress: (_this$$el$dataset$scr4 = this.$el.dataset['scrollEventProgress']) != null ? _this$$el$dataset$scr4 : null,
         scrollSpeed: this.$el.dataset['scrollSpeed'] != null ? parseFloat(this.$el.dataset['scrollSpeed']) : null,
+        scrollParallaxSideways: this.$el.dataset['scrollParallaxSideways'] != null,
+        scrollParallaxClamp: (_this$$el$dataset$scr5 = this.$el.dataset['scrollParallaxClamp']) != null ? _this$$el$dataset$scr5 : null,
         scrollRepeat: this.$el.dataset['scrollRepeat'] != null,
-        scrollCall: (_this$$el$dataset$scr5 = this.$el.dataset['scrollCall']) != null ? _this$$el$dataset$scr5 : null,
+        scrollCall: (_this$$el$dataset$scr6 = this.$el.dataset['scrollCall']) != null ? _this$$el$dataset$scr6 : null,
         scrollCallSelf: this.$el.dataset['scrollCallSelf'] != null,
         scrollIgnoreFold: this.$el.dataset['scrollIgnoreFold'] != null,
         scrollEnableTouchSpeed: this.$el.dataset['scrollEnableTouchSpeed'] != null
@@ -368,9 +370,17 @@
             this.translateValue = progress * wSize * this.attributes.scrollSpeed * -1;
           } else {
             var _progress = mapRange(0, 1, -1, 1, this.progress);
+            switch (this.attributes.scrollParallaxClamp) {
+              case '+':
+                _progress = Math.max(_progress, 0);
+                break;
+              case '-':
+                _progress = Math.min(_progress, 0);
+                break;
+            }
             this.translateValue = _progress * wSize * this.attributes.scrollSpeed * -1;
           }
-          this.$el.style.transform = this.scrollOrientation === 'vertical' ? "translate3d(0, " + this.translateValue + "px, 0)" : "translate3d(" + this.translateValue + "px, 0, 0)";
+          this.$el.style.transform = "translate3d(" + (this.scrollOrientation === 'vertical' ? this.attributes.scrollParallaxSideways ? this.translateValue + "px, 0" : "0, " + this.translateValue + "px" : this.attributes.scrollParallaxSideways ? "0, " + this.translateValue + "px" : this.translateValue + "px, 0") + ", 0)";
         }
       }
     }
