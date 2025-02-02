@@ -12,6 +12,8 @@
  * - scrollCssProgress - Add a specific css variable (PROGRESS_CSS_VAR) that store the scroll progress
  * - scrollEventProgress - Send scroll progress to custom event listeners.
  * - scrollSpeed - Add a scroll multiplicator to create a parallax effect
+ * + scrollParallaxSideways - Translates the scroll parallax direction to be sideways from the scroll orientation.
+ * + scrollParallaxClamp - Clamps the scroll parallax to the origin position of the element, negative or positive (-/+).
  * - scrollRepeat - Repeat the option to trigger animation each time the element is intersected
  * - scrollCall - Call a custom event or a modular callback when the element is intersected
  */
@@ -96,6 +98,8 @@ export default class ScrollElement {
                 this.$el.dataset['scrollSpeed'] != null
                     ? parseFloat(this.$el.dataset['scrollSpeed'])
                     : null,
+            scrollParallaxSideways: this.$el.dataset['scrollParallaxSideways'] != null,
+            scrollParallaxClamp: this.$el.dataset['scrollParallaxClamp'] ?? null,
             scrollRepeat: this.$el.dataset['scrollRepeat'] != null,
             scrollCall: this.$el.dataset['scrollCall'] ?? null,
             scrollCallSelf: this.$el.dataset['scrollCallSelf'] != null,
@@ -200,15 +204,31 @@ export default class ScrollElement {
                     this.translateValue =
                         progress * wSize * this.attributes.scrollSpeed * -1;
                 } else {
-                    const progress = mapRange(0, 1, -1, 1, this.progress);
+                    let progress = mapRange(0, 1, -1, 1, this.progress);
+
+                    switch (this.attributes.scrollParallaxClamp) {
+                        case '+':
+                            progress = Math.max(progress, 0);
+                            break;
+
+                        case '-':
+                            progress = Math.min(progress, 0);
+                            break;
+                    }
+
                     this.translateValue =
                         progress * wSize * this.attributes.scrollSpeed * -1;
                 }
 
-                this.$el.style.transform =
+                this.$el.style.transform = `translate3d(${
                     this.scrollOrientation === 'vertical'
-                        ? `translate3d(0, ${this.translateValue}px, 0)`
-                        : `translate3d(${this.translateValue}px, 0, 0)`;
+                        ? this.attributes.scrollParallaxSideways
+                            ? `${this.translateValue}px, 0`
+                            : `0, ${this.translateValue}px`
+                        : this.attributes.scrollParallaxSideways
+                            ? `0, ${this.translateValue}px`
+                            : `${this.translateValue}px, 0`
+                }, 0)`;
             }
         }
     }
