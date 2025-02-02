@@ -49,8 +49,7 @@
         "build:css": "postcss styles/main.css --o ./dist/locomotive-scroll.css --no-map",
         "build:bundle-css": "postcss styles/main.css --o ./bundled/locomotive-scroll.css --no-map",
         "watch": "microbundle watch -i index.ts --o ./dist --no-compress",
-        "publish:beta": "npm publish --tag beta",
-        "postinstall": "cd ./node_modules/locomotive-scroll && npm install && cd ../.."
+        "publish:beta": "npm publish --tag beta"
     },
     "files": [
         "dist",
