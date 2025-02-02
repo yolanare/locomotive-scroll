@@ -1,3 +1,20 @@
+# yolan's fork
+
+Forked the very great [v5-beta](https://github.com/locomotivemtl/locomotive-scroll/tree/v5-beta) to add my own features.
+
+### New attributes :
+
+| Name | Values | Description |
+| --- | --- | --- |
+| data-scroll-parallax-sideways | <i>(None)</i> | Translates the scroll parallax direction to be sideways from the scroll orientation. |
+| data-scroll-parallax-clamp | `"-"` or `"+"` | Clamps the scroll parallax to the origin position of the element, negative or positive. |
+
+<br>
+
+---
+
+<br>
+
 > **Warning** 
 > 
 > Locomotive Scroll v.5 is currently in **beta**. Be prepared for breaking changes compared to previous versions.
